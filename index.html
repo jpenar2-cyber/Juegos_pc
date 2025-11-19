@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Catálogo — 800 Juegos (mini-thumbs generados)</title>
+<title>Catálogo de Juegos - Con Descripciones</title>
 <style>
 :root{--bg:#0b1020;--card-bg:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));--text:#e6eef8;--muted:#9aa6c0}
 body{margin:0;font-family:Inter,system-ui,Arial,sans-serif;background:linear-gradient(180deg,#050612 0%, #07112a 100%);color:var(--text)}
@@ -15,23 +15,25 @@ h1{margin:0;font-size:20px}
 input[type=text]{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:rgba(255,255,255,0.02);color:var(--text)}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;margin-top:16px}
 .card{background:var(--card-bg);border-radius:12px;padding:12px;display:flex;gap:10px;align-items:center;border:1px solid rgba(255,255,255,0.02);cursor:pointer}
-.thumb{width:64px;height:86px;border-radius:8px;flex:0 0 64px;overflow:hidden;display:flex;align-items:center;justify-content:center;background:#0b1220}
-.thumb img{width:64px;height:86px;object-fit:cover;display:block}
+.thumb{width:64px;height:86px;border-radius:8px;flex:0 0 64px;overflow:hidden;display:flex;align-items:center;justify-content:center}
 .title{font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .meta{color:var(--muted);font-size:13px}
 .footer{margin-top:18px;color:var(--muted);font-size:13px;text-align:center}
+
 /* Modal */
 #modal{position:fixed;left:0;top:0;width:100%;height:100%;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,0.7);padding:20px;z-index:9999}
 .modal-box{background:#0f1724;padding:18px;border-radius:12px;max-width:720px;width:100%;color:var(--text);box-shadow:0 20px 60px rgba(0,0,0,0.6)}
 .modal-header{display:flex;align-items:center;gap:12px}
-.modal-thumb{width:240px;height:340px;border-radius:8px;flex:0 0 240px;overflow:hidden;display:flex;align-items:center;justify-content:center}
-.modal-thumb img{width:100%;height:100%;object-fit:cover}
+.modal-thumb{width:120px;height:170px;border-radius:8px;flex:0 0 120px;overflow:hidden;display:flex;align-items:center;justify-content:center}
 .modal-title{font-size:18px;margin:0}
 .modal-desc{margin-top:10px;color:var(--muted)}
 .reqs{margin-top:12px}
 .req-row{display:flex;gap:8px;align-items:center}
 .close-btn{margin-left:auto;background:transparent;border:0;color:var(--muted);font-size:18px;cursor:pointer}
-@media (max-width:720px){ .modal-header{flex-direction:column;align-items:flex-start} .modal-thumb{width:100%;height:160px} }
+@media (max-width:720px){
+  .modal-header{flex-direction:column;align-items:flex-start}
+  .modal-thumb{width:100%;height:160px}
+}
 </style>
 </head>
 <body>
@@ -39,8 +41,8 @@ input[type=text]{width:100%;padding:10px;border-radius:8px;border:1px solid rgba
   <div class="header">
     <div class="logo">CAT</div>
     <div>
-      <h1>Catálogo — 800 Juegos</h1>
-      <div class="muted">Mini-thumbs generados automáticamente (1 imagen por juego, relacionadas con género)</div>
+      <h1>Catálogo de Juegos</h1>
+      <div class="muted">Haz clic en un juego para ver descripción y requisitos mínimos.</div>
     </div>
   </div>
 
@@ -48,7 +50,7 @@ input[type=text]{width:100%;padding:10px;border-radius:8px;border:1px solid rgba
 
   <div id="grid" class="grid"></div>
 
-  <div class="footer" id="footer">Cargando...</div>
+  <div class="footer">Archivo generado: 2025-11-19 00:00 UTC</div>
 </div>
 
 <!-- Modal -->
@@ -70,116 +72,100 @@ input[type=text]{width:100%;padding:10px;border-radius:8px;border:1px solid rgba
 </div>
 
 <script>
-// --- original games extracted from your file ---
-const GAMES = 
-REPLACE_GAMES_ARRAY
-;
+// ===== Datos (300 juegos) =====
+const GAMES = ["7 Days to Die","ABZÛ","Age of Empires II Definitive","Age of Empires IV","Age of Mythology","Alan Wake 2","Alan Wake Remastered","Alien Isolation","Amnesia Rebirth","Amnesia The Dark Descent","Anno 1404","Anno 1800","Anthem","ARK Survival Ascended","ARK Survival Evolved","Assetto Corsa","Assetto Corsa Competizione","Assassin’s Creed Odyssey","Assassin’s Creed Origins","Assassin’s Creed Valhalla","Apex Legends","Back 4 Blood","Baldur’s Gate 3","Banished","Batman Arkham Asylum","Batman Arkham City","Batman Arkham Knight","Battlefield 1","Battlefield 2042","Battlefield 4","Battlefield V","BioShock 1","BioShock 2","BioShock Infinite","Borderlands 2","Borderlands 3","Burnout Paradise Remastered","Call of Duty Black Ops 2","Call of Duty Black Ops 3","Call of Duty Black Ops Cold War","Call of Duty Modern Warfare (2019)","Call of Duty WWII","Car Mechanic Simulator 2021","Cult of the Lamb","Cuphead","CyberConnect Naruto Storm 4","Cyberpunk 2077","Dark Souls 3","Dark Souls Remastered","Days Gone","Death Stranding","Devil May Cry 4","Devil May Cry 5","Dirt 5","Dirt Rally 2.0","Diablo III","Diablo IV","Doki Doki Literature Club","Don’t Starve","Don’t Starve Together","Doom (2016)","Doom Eternal","Dying Light","Dying Light 2","Dyson Sphere Program","Elden Ring","Endzone A World Apart","Europa Universalis IV","Euro Truck Simulator 2","F1 22","F1 23","Far Cry 3","Far Cry 4","Far Cry 5","Far Cry 6","Factorio","FIFA 21","FIFA 22","FIFA 23","Firewatch","Forza Horizon 4","Forza Horizon 5","Forza Motorsport (2023)","Foundation","Frostpunk","Frostpunk 2","Gears 4","Gears 5","Gears of War Ultimate","Ghost of Tsushima","God of War","GTA V","Gris","Grim Dawn","Hades","Hades II","Halo Infinite","Hearts of Iron IV","Hollow Knight","Hotline Miami","Hotline Miami 2","House Flipper","House Flipper 2","Horizon Forbidden West","Horizon Zero Dawn","Inside","Journey","Judgment","Katana ZERO","Kingdom Come Deliverance","Kingdoms of Amalur Re-Reckoning","Killing Floor 2","Layers of Fear 1","Layers of Fear 2","Layers of Fear (2023)","Left 4 Dead 2","Limbo","Little Misfortune","Little Nightmares","Little Nightmares II","Lost Judgment","Mafia II Definitive Edition","Mafia Definitive Edition","Mafia III","Mad Max","Mass Effect Andromeda","Mass Effect Legendary Edition","Metro 2033","Metro Exodus","Metro Last Light","Middle-earth Shadow of Mordor","Middle-earth Shadow of War","MotoGP 23","My Time at Portia","My Time at Sandrock","Need for Speed 2015","Need for Speed Heat","Need for Speed Hot Pursuit Remastered","Need for Speed Most Wanted 2012","Need for Speed Payback","Need for Speed Rivals","Nier Automata","Nier Replicant","Northgard","Oblivion","Omori","Oxygen Not Included","Outlast","Outlast 2","PC Building Simulator","PC Building Simulator 2","Payday 2","Payday 3","Path of Exile","Persona 3 Reload","Persona 4 Golden","Persona 5 Royal","Planet Coaster","Planet Zoo","Prey (2017)","Project Zomboid","Prototype","Prototype 2","Raft","RDR2-Red Dead Redemption 2","Resident Evil 2 Remake","Resident Evil 3 Remake","Resident Evil 4 Remake","Resident Evil 7","Resident Evil Village","RimWorld","Rise of the Tomb Raider","Road Redemption","Rust","Saints Row Reboot","Saints Row IV","Saints Row The Third","SCUM","Shadow of the Tomb Raider","Shenmue I & II HD","Shenmue III","SimCity 4","Skyrim Original","Skyrim Special Edition","Slime Rancher","Slime Rancher 2","SnowRunner","Sons of the Forest","SOMA","Soul-like (placeholder)","Spiritfarer","Spelunky (placeholder)","Spider-Man Miles Morales","Spider-Man Remastered","Satisfactory","Star Wars Battlefront II","Star Wars Jedi Fallen Order","Star Wars Jedi Survivor","Star Wars Squadrons","Starbound","State of Decay 1","State of Decay 2","Stardew Valley","Steam-like (placeholder)","Stray (placeholder)","Subnautica","Subnautica Below Zero","Sims 3","Sims 4","SOMA 2 (placeholder)","StarCraft II (placeholder)","Stellaris (placeholder)","Street Racing (placeholder)","Satisfactory 2 (placeholder)","System Shock (placeholder)","Terraria","The Crew 2","The Crew Motorfest","The Division 1","The Division 2","The Elder Scrolls Online","The Evil Within","The Evil Within 2","The Forest","The Last of Us Part I","The Outer Worlds","The Witness","The Witcher 3","Torchlight II","Torchlight III","Total War Rome II","Total War Three Kingdoms","Total War Warhammer II","Total War Warhammer III","Trackmania 2020","Tropico 5","Tropico 6","Tomb Raider (2013)","Trials (placeholder)","Undertale","Uncharted Legacy of Thieves","Valheim (placeholder)","Visage","Warframe","WRC 2023","Watch Dogs 1","Watch Dogs 2","Watch Dogs Legion","Wolfenstein The Old Blood","Wolfenstein The New Order","Wolfenstein Youngblood","XCOM Enemy Unknown","XCOM 2","Yakuza 0","Yakuza Kiwami","Yakuza Kiwami 2","Yakuza Like a Dragon"];
 
-// We'll programmatically append entries until we have 800 total
-(function expandTo800(){
-  const cod = [
-    "Call of Duty (2003)","Call of Duty 2","Call of Duty 3","Call of Duty 4: Modern Warfare",
-    "Call of Duty: World at War","Call of Duty: Modern Warfare 2","Call of Duty: Modern Warfare 3",
-    "Call of Duty: Black Ops","Call of Duty: Black Ops II","Call of Duty: Black Ops III",
-    "Call of Duty: Black Ops 4","Call of Duty: Black Ops 5","Call of Duty: Black Ops 6",
-    "Call of Duty: Ghosts","Call of Duty: Advanced Warfare","Call of Duty: Infinite Warfare",
-    "Call of Duty: WWII","Call of Duty: Vanguard","Call of Duty: Modern Warfare (2019)",
-    "Call of Duty: Black Ops Cold War"
-  ];
-  const pes = (function(){
-    const arr = [];
-    for(let y=2001;y<=2021;y++) arr.push('Pro Evolution Soccer '+y);
-    return arr;
-  })();
-  const pool = [
-   "Counter-Strike 1.6","Counter-Strike: Source","Counter-Strike: Global Offensive","Valorant",
-   "Minecraft","Fortnite","League of Legends","Dota 2","Overwatch","Overwatch 2",
-   "The Sims 2","The Sims 3","The Sims 4","Grand Theft Auto IV","Grand Theft Auto V",
-   "Batman Arkham Origins","Batman Arkham Asylum","Batman Arkham City","Batman Arkham Knight",
-   "Left 4 Dead","Left 4 Dead 2","Payday: The Heist","Payday 2","Watch Dogs","Watch Dogs 2",
-   "Dishonored","Dishonored 2","Deus Ex","Deus Ex: Human Revolution","Deus Ex: Mankind Divided",
-   "Fallout 3","Fallout New Vegas","Fallout 4","Borderlands","Borderlands 2","Borderlands 3",
-   "Dead Space","Dead Space 2","Dead Space 3","The Binding of Isaac","Super Meat Boy","Celeste",
-   "Hollow Knight","Ori and the Blind Forest","Ori and the Will of the Wisps","Pillars of Eternity",
-   "Divinity: Original Sin 2","The Witcher","The Witcher 2","The Witcher 3","Metro 2033",
-   "Metro: Last Light","Metro Exodus","Bioshock","Bioshock 2","Bioshock Infinite","Control",
-   "Alan Wake","Alan Wake 2","Nier: Automata","Nioh","Nioh 2","Sekiro: Shadows Die Twice",
-   "Dark Souls","Dark Souls II","Dark Souls III","Elden Ring","Starfield","No Man's Sky",
-   "Titanfall","Titanfall 2","Star Wars Jedi: Fallen Order","Star Wars Jedi: Survivor",
-   "Civilization V","Civilization VI","Total War: Rome II","Total War: Three Kingdoms",
-   "Total War: Warhammer II","Total War: Warhammer III","Factorio","Satisfactory","RimWorld",
-   "Stellaris","Hearts of Iron IV","Europa Universalis IV","Kerbal Space Program",
-   "Subnautica","Subnautica Below Zero","Terraria","Stardew Valley","Farming Simulator 19",
-   "Planet Coaster","Planet Zoo","Cities: Skylines","Anno 1800","Age of Empires II Definitive",
-   "Age of Empires IV","Red Dead Redemption 2","Sons of the Forest","Rust","SCUM","The Forest",
-   "Doki Doki Literature Club","Undertale","Papers, Please","This War of Mine","Frostpunk",
-   "Forza Horizon 4","Forza Horizon 5","Assetto Corsa","Project Cars 2","DiRT Rally 2.0",
-   "F1 2021","MotoGP 23","WRC 2023","Yakuza 0","Yakuza Kiwami","Yakuza: Like a Dragon",
-   "Hades","Slay the Spire","Gears 5","Spyro Reignited Trilogy","Tomb Raider (2013)",
-   "Rise of the Tomb Raider","Shadow of the Tomb Raider","Resident Evil 2 Remake","Resident Evil 3 Remake",
-   "Resident Evil 4 Remake","Resident Evil Village","SOMA","Amnesia: The Dark Descent","Outlast",
-   "The Evil Within","God of War (PC)","Horizon Zero Dawn (PC)","Control Ultimate Edition","Death Stranding"
-  ];
+// DESCS, REQS, PRICES, SIZES populated below
+const DESCS = {};
+const REQS = {};
+const PRICES = {};
+const SIZES = {};
 
-  // add COD and PES first
-  for(const x of cod) if(!GAMES.includes(x)) GAMES.push(x);
-  for(const x of pes) if(!GAMES.includes(x)) GAMES.push(x);
-
-  // then fill with pool variants until 800
-  let i=0; let idx=0;
-  while(GAMES.length < 800){
-    const base = pool[idx % pool.length];
-    const suffix = Math.floor(i / pool.length);
-    const candidate = suffix===0 ? base : (base + ' - Edition ' + suffix);
-    if(!GAMES.includes(candidate)) GAMES.push(candidate);
-    idx++; i++;
-    if(i>20000) break;
+// Populate descriptive data and requirements (deterministic template)
+function hash_int(s){
+  let h = 2166136261 >>> 0;
+  for(let i=0;i<s.length;i++){
+    h ^= s.charCodeAt(i);
+    h = (h + ((h<<1) + (h<<4) + (h<<7) + (h<<8) + (h<<24))) >>> 0;
   }
-})();
-
-// --- Thumbnail generator (SVG data URLs) ---
+  return h >>> 0;
+}
 function genre_guess(name){
   const low = name.toLowerCase();
-  if(/race|forza|need for speed|dirt|f1|moto|assetto|project cars/.test(low)) return 'Carreras';
-  if(/fifa|pes|pro evolution|efootball|football|soccer/.test(low)) return 'Deportes';
-  if(/farm|stardew|slime|my time|portia|rancher|farming/.test(low)) return 'Simulación';
-  if(/survival|rust|ark|raft|forest|zomboid|conan|scum/.test(low)) return 'Supervivencia';
-  if(/call of duty|battlefield|doom|halo|rainbow|far cry|left 4 dead|counter-strike|valorant|cs:go/.test(low)) return 'Shooter';
-  if(/witcher|elden|diablo|baldur|rpg|persona|mass effect|dragon|yakuza|nier|skyrim|fallout/.test(low)) return 'RPG';
-  if(/simcity|cities|planet|tycoon|anno|civilization|total war|age of|factorio/.test(low)) return 'Estrategia';
-  if(/hollow|indie|cuphead|inside|limbo|undertale|hotline|celeste|hades|spelunky/.test(low)) return 'Indie';
-  if(/resident evil|outlast|amnesia|alien|layers|visage|soma|silent hill/.test(low)) return 'Horror';
-  return 'Acción';
+  if(/race|forza|need for speed|dirt|f1|moto/.test(low)) return "Carreras";
+  if(/fifa|pes|sports|nba|football|moto/.test(low)) return "Deportes";
+  if(/farm|stardew|slime|my time|portia|rancher/.test(low)) return "Simulación/Aventura";
+  if(/survival|rust|ark|raft|forest|zomboid|conan/.test(low)) return "Supervivencia";
+  if(/call of duty|battlefield|doom|halo|rainbow|far cry|left 4 dead/.test(low)) return "Shooter";
+  if(/witcher|elden|diablo|baldur|rpg|persona|mass effect|dragon|yakuza|final fantasy/.test(low)) return "RPG/Acción";
+  if(/simcity|cities|planet|tycoon|anno|civilization|total war|age of/.test(low)) return "Estrategia/Simulación";
+  if(/hollow|celeste|indie|cuphead|inside|limbo|undertale|hotline/.test(low)) return "Indie/Plataforma";
+  if(/resident evil|outlast|amnesia|alien|layers|visage/.test(low)) return "Horror/Suspenso";
+  return "Acción/Aventura";
+}
+function short_description(name, genre){
+  const templates = {
+    "Carreras": `${name} es un título de carreras con énfasis en velocidad y personalización de vehículos.`,
+    "Deportes": `${name} es un juego de deportes que ofrece modos rápidos y competiciones.`,
+    "Simulación/Aventura": `${name} combina simulación con elementos de aventura y gestión.`,
+    "Supervivencia": `${name} es un juego de supervivencia centrado en recolección, construcción y gestión de recursos.`,
+    "Shooter": `${name} es un shooter con acción intensa, campañas y modos multijugador.`,
+    "RPG/Acción": `${name} es un RPG/acción con progresión de personajes y combates profundos.`,
+    "Estrategia/Simulación": `${name} es un juego de estrategia que pone al jugador a administrar recursos y ejércitos.`,
+    "Indie/Plataforma": `${name} es un título indie con enfoque en plataformas y diseño creativo.`,
+    "Horror/Suspenso": `${name} es un juego de terror que prioriza la atmósfera y la tensión narrativa.`,
+    "Acción/Aventura": `${name} es un juego de acción y aventura con enfoque en historia y exploración.`
+  };
+  return templates[genre] || templates["Acción/Aventura"];
+}
+function min_requirements(name){
+  const h = hash_int(name);
+  let tier = h % 3; // 0 low,1 med,2 high
+  const low = name.toLowerCase();
+  if(/remaster|2023|2022|2021|forza|elden|red dead|cyberpunk|hogwarts|forbidden|horizon|alan wake 2/.test(low)) tier = Math.max(tier,2);
+  if(/indie|limbo|celeste|undertale/.test(low)) tier = 0;
+  if(tier===0) return {"CPU":"Intel Core i3 / AMD equivalente","RAM":"4 GB","GPU":"NVIDIA GTX 650 / Intel HD 520 (1 GB VRAM)","HDD":"10 GB"};
+  if(tier===1) return {"CPU":"Intel Core i5 / AMD Ryzen 3","RAM":"8 GB","GPU":"NVIDIA GTX 1050 / GTX 960 (2-4 GB VRAM)","HDD":"25 GB"};
+  return {"CPU":"Intel Core i7 / AMD Ryzen 5","RAM":"16 GB","GPU":"NVIDIA GTX 1660 / RTX 2060 (6 GB VRAM)","HDD":"50 GB"};
 }
 
-function svgThumbData(name){
+// Fill DESCS, REQS, PRICES, SIZES
+for(const name of GAMES){
   const genre = genre_guess(name);
-  const symbol = ({
-    'Carreras':'🏎️','Deportes':'⚽','Simulación':'🏡','Supervivencia':'🪓','Shooter':'🔫',
-    'RPG':'🛡️','Estrategia':'♟️','Indie':'🎨','Horror':'👻','Acción':'⚔️'
-  })[genre] || '🎮';
-  const bgColor = {
-    'Carreras':'#1f2937','Deportes':'#0b84ff','Simulación':'#16a34a','Supervivencia':'#8b5cf6',
-    'Shooter':'#ef4444','RPG':'#f97316','Estrategia':'#06b6d4','Indie':'#ec4899','Horror':'#111827','Acción':'#10b981'
-  }[genre] || '#334155';
+  DESCS[name] = short_description(name, genre);
+  REQS[name] = min_requirements(name);
+  // simple price logic: newer keywords -> 16000-20000, else 10000-16000
+  const h = hash_int(name);
+  const newer = /2023|2022|2021|2020|remake|remastered|definitive|ultimate|special|edition|forbidden|horizon|elden|hogwarts|cyberpunk|dying light 2|alan wake 2|f1 23|motogp|wrc 2023|ascended/.test(name.toLowerCase());
+  PRICES[name] = newer ? (16000 + (h % 4001)) : (10000 + (h % 6001));
+  SIZES[name] = 1 + (h % 120); // 1-120 GB
+}
 
-  const title = name.length>20 ? name.slice(0,20)+'...' : name;
-  const svg = `<?xml version="1.0" encoding="UTF-8"?><svg xmlns='http://www.w3.org/2000/svg' width='400' height='560' viewBox='0 0 400 560'>
-    <rect rx='12' width='100%' height='100%' fill='${bgColor}' />
-    <text x='50%' y='22%' font-family='Segoe UI, Arial' font-size='48' fill='white' text-anchor='middle' dominant-baseline='middle'>${symbol}</text>
-    <text x='50%' y='60%' font-family='Segoe UI, Arial' font-size='22' fill='white' text-anchor='middle' dominant-baseline='middle'>${escapeHtml(title)}</text>
-    <text x='50%' y='78%' font-family='Segoe UI, Arial' font-size='14' fill='rgba(255,255,255,0.8)' text-anchor='middle' dominant-baseline='middle'>${genre}</text>
+// --- Rendering and modal logic ---
+function hashString(s){
+  let h = 2166136261 >>> 0;
+  for(let i=0;i<s.length;i++){ h ^= s.charCodeAt(i); h = (h + ((h<<1)+(h<<4)+(h<<7)+(h<<8)+(h<<24))) >>> 0; }
+  return h >>> 0;
+}
+function neonColors(name){
+  const h = hashString(name);
+  const a = (h % 360);
+  const b = (h % 20) + 60;
+  const c = 45 + (h % 20);
+  const color1 = `hsl(${a} ${b}% ${c}%)`;
+  const color2 = `hsl(${(a+60)%360} ${Math.max(50,b-10)}% ${Math.max(40,c-10)}%)`;
+  return {c1: color1, c2: color2};
+}
+function svgThumbData(name){
+  const txt = name.split(' ').slice(0,3).join(' ');
+  const {c1,c2} = neonColors(name);
+  const svg = `<svg xmlns='http://www.w3.org/2000/svg' width='400' height='560' viewBox='0 0 400 560'>
+  <defs><linearGradient id='g' x1='0' x2='1' y1='0' y2='1'><stop offset='0' stop-color='${c1}' stop-opacity='0.98'/><stop offset='1' stop-color='${c2}' stop-opacity='0.98'/></linearGradient></defs>
+  <rect rx='12' width='100%' height='100%' fill='url(#g)' />
+  <text x='50%' y='50%' font-family='Arial, Helvetica, sans-serif' font-size='30' fill='rgba(255,255,255,0.96)' text-anchor='middle' dominant-baseline='middle'>${txt}</text>
   </svg>`;
   return 'data:image/svg+xml;utf8,' + encodeURIComponent(svg);
 }
-
-function escapeHtml(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
-
-// Price/size/reqs (deterministic)
-function hashString(s){ let h=2166136261>>>0; for(let i=0;i<s.length;i++){ h^=s.charCodeAt(i); h=(h+((h<<1)+(h<<4)+(h<<7)+(h<<8)+(h<<24)))>>>0;} return h>>>0; }
-function priceFor(name){ const h=hashString(name); const newer=/2023|2022|2021|2020|remake|remastered|definitive|ultimate|special|edition|forbidden|horizon|elden|cyberpunk|alan wake 2|ascended/i.test(name); return newer?(16000+(h%4001)):(10000+(h%6001)); }
-function sizeFor(name){ return 1+(hashString(name)%120); }
-function reqsFor(name){ const h=hashString(name); let tier=h%3; if(/indie|limbo|undertale|celeste/i.test(name)) tier=0; if(/remaster|2023|2022|2021|forbidden|horizon|alan wake 2|cyberpunk|elden/i.test(name)) tier=Math.max(tier,2); if(tier===0) return {CPU:"Intel Core i3 / AMD equivalente",RAM:"4 GB",GPU:"GTX 650 / Intel HD 520",HDD:"10 GB"}; if(tier===1) return {CPU:"Intel Core i5 / AMD Ryzen 3",RAM:"8 GB",GPU:"GTX 1050 / GTX 960",HDD:"25 GB"}; return {CPU:"Intel Core i7 / AMD Ryzen 5",RAM:"16 GB",GPU:"GTX 1660 / RTX 2060",HDD:"50 GB"}; }
 
 const grid = document.getElementById('grid');
 const searchInput = document.getElementById('search');
@@ -188,14 +174,68 @@ const modalTitle = document.getElementById('modal_title');
 const modalDesc = document.getElementById('modal_desc');
 const modalThumb = document.getElementById('modal_thumb');
 const reqsList = document.getElementById('reqs_list');
-const footer = document.getElementById('footer');
 
-function openModal(name){ modalTitle.textContent = name; modalDesc.textContent = "Descripción breve generada automáticamente."; modalThumb.innerHTML = ''; const img = document.createElement('img'); img.alt = name; img.src = svgThumbData(name); modalThumb.appendChild(img); reqsList.innerHTML = ''; const r = reqsFor(name); for(const k of ['CPU','RAM','GPU','HDD']){ const div=document.createElement('div'); div.className='req-row'; div.textContent = k+': '+r[k]; reqsList.appendChild(div);} modal.style.display='flex'; modal.setAttribute('aria-hidden','false'); }
-function closeModal(){ modal.style.display='none'; modal.setAttribute('aria-hidden','true'); }
+function openModal(name){
+  modalTitle.textContent = name;
+  modalDesc.textContent = DESCS[name] || '';
+  // thumb
+  modalThumb.innerHTML = '';
+  const img = document.createElement('img'); img.src = svgThumbData(name); img.alt = name;
+  img.style.width='100%'; img.style.height='100%'; img.style.objectFit='cover';
+  modalThumb.appendChild(img);
+  // reqs
+  reqsList.innerHTML = '';
+  if(REQS[name]){
+    const r = REQS[name];
+    for(const k of ['CPU','RAM','GPU','HDD']){
+      const div = document.createElement('div'); div.className='req-row';
+      div.textContent = k + ': ' + r[k];
+      reqsList.appendChild(div);
+    }
+  }
+  modal.style.display='flex';
+  modal.setAttribute('aria-hidden','false');
+}
 
-function render(){ const q=(searchInput.value||'').trim().toLowerCase(); grid.innerHTML=''; let shown=0; for(const name of GAMES){ const price=priceFor(name); const size=sizeFor(name); if(q && !(name.toLowerCase().includes(q) || price.toString().includes(q) || (size+'gb').includes(q))) continue; const card=document.createElement('div'); card.className='card'; card.onclick=()=>openModal(name); const thumb=document.createElement('div'); thumb.className='thumb'; const img=document.createElement('img'); img.src=svgThumbData(name); img.alt=name; thumb.appendChild(img); const info=document.createElement('div'); info.style.flex='1'; const title=document.createElement('div'); title.className='title'; title.textContent=name; const meta=document.createElement('div'); meta.className='meta'; meta.textContent = `$${price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")} • ${size} GB`; info.appendChild(title); info.appendChild(meta); card.appendChild(thumb); card.appendChild(info); grid.appendChild(card); shown++; } footer.textContent = `${shown} / ${GAMES.length} resultados — Mini-thumbs generados localmente.`; }
+function closeModal(){
+  modal.style.display='none';
+  modal.setAttribute('aria-hidden','true');
+}
 
-document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeModal(); });
+function render(){
+  const q = (searchInput.value || '').trim().toLowerCase();
+  grid.innerHTML = '';
+  let shown = 0;
+  for(const name of GAMES){
+    const price = PRICES[name] ? PRICES[name] : 12000;
+    const size = SIZES[name] ? SIZES[name] : 20;
+    // filter
+    if(q && !(name.toLowerCase().includes(q) || price.toString().includes(q) || (size+'gb').includes(q))) continue;
+    const card = document.createElement('div'); card.className='card';
+    card.onclick = ()=> openModal(name);
+    const thumb = document.createElement('div'); thumb.className='thumb';
+    const img = document.createElement('img'); img.src = svgThumbData(name); img.alt = name;
+    img.style.width='56px'; img.style.height='76px'; img.style.display='block';
+    thumb.appendChild(img);
+    const info = document.createElement('div'); info.style.flex='1';
+    const title = document.createElement('div'); title.className='title'; title.textContent = name;
+    const meta = document.createElement('div'); meta.className='meta'; meta.textContent = `$${price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")} • ${size} GB`;
+    info.appendChild(title); info.appendChild(meta);
+    card.appendChild(thumb); card.appendChild(info);
+    grid.appendChild(card);
+    shown++;
+  }
+  // show "no results" if none
+  const footer = document.querySelector('.footer');
+  footer && (footer.textContent = `${shown} / ${GAMES.length} resultados — Archivo generado: 2025-11-19`);
+  document.getElementById('empty') && (document.getElementById('empty').style.display = shown ? 'none' : 'block');
+}
+
+document.addEventListener('keydown', function(e){
+  if(e.key === 'Escape') closeModal();
+});
+
+// initial render
 render();
 </script>
 </body>
